@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Post</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgb(60, 63, 65);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9; /* Pale background color */
+        }
+
+        h1 {
+            text-align: left;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007BFF; /* Blue color */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom textarea styles */
+        textarea {
+            border: 1px solid #ccc;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 16px;
+            resize: vertical; /* Allow vertical resizing */
+            outline: none;
+        }
+
+        label, input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+
+        .checkboxes {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .checkboxes label {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Custom checkbox styles */
+        .checkboxes input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #007BFF; /* Blue color */
+            border-radius: 4px;
+            outline: none;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .checkboxes input[type="checkbox"]:checked {
+            background-color: #007BFF; /* Blue color */
+            border-color: #007BFF; /* Blue color */
+        }
+
+        .checkboxes input[type="checkbox"]:checked::before {
+            content: "\2713";
+            display: block;
+            text-align: center;
+            color: white;
+        }
+
+        /* Custom datetime input styles */
+        input[type="datetime-local"] {
+            border: 1px solid #ccc;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: #007BFF; /* Blue color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Post Scheduler</h1>
+        <form action="/post" method="post">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <div class="checkboxes">
+                <label>
+                    <input type="checkbox" name="post_facebook" value="1">
+                    Post to Facebook
+                </label>
+                <label>
+                    <input type="checkbox" name="post_twitter" value="1">
+                    Post to Twitter
+                </label>
+            </div>
+
+            <label for="post_time">Schedule Time (IST):</label>
+            <input type="datetime-local" id="post_time" name="post_time" required>
+
+            <button type="submit">Schedule Post</button>
+        </form>
+    </div>
+</body>
+</html>
